@@ -52,33 +52,6 @@ def do_basic_demo() -> None:
 	print(to_svg_str(qr, 4))
 
 
-def do_variety_demo() -> None:
-	"""Creates a variety of QR Codes that exercise different features of the library, and prints each one to the console."""
-	
-	# Numeric mode encoding (3.33 bits per digit)
-	qr = QrCode.encode_text("314159265358979323846264338327950288419716939937510", QrCode.Ecc.MEDIUM)
-	print_qr(qr)
-	
-	# Alphanumeric mode encoding (5.5 bits per character)
-	qr = QrCode.encode_text("DOLLAR-AMOUNT:$39.87 PERCENTAGE:100.00% OPERATIONS:+-*/", QrCode.Ecc.HIGH)
-	print_qr(qr)
-	
-	# Unicode text as UTF-8
-	qr = QrCode.encode_text("\u3053\u3093\u306B\u3061\u0077\u0061\u3001\u4E16\u754C\uFF01\u0020\u03B1\u03B2\u03B3\u03B4", QrCode.Ecc.QUARTILE)
-	print_qr(qr)
-	
-	# Moderately large QR Code using longer text (from Lewis Carroll's Alice in Wonderland)
-	qr = QrCode.encode_text(
-		"Alice was beginning to get very tired of sitting by her sister on the bank, "
-		"and of having nothing to do: once or twice she had peeped into the book her sister was reading, "
-		"but it had no pictures or conversations in it, 'and what is the use of a book,' thought Alice "
-		"'without pictures or conversations?' So she was considering in her own mind (as well as she could, "
-		"for the hot day made her feel very sleepy and stupid), whether the pleasure of making a "
-		"daisy-chain would be worth the trouble of getting up and picking the daisies, when suddenly "
-		"a White Rabbit with pink eyes ran close by her.", QrCode.Ecc.HIGH)
-	print_qr(qr)
-
-
 # ---- Utilities ----
 
 def to_svg_str(qr: QrCode, border: int) -> str:
