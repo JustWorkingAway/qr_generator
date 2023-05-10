@@ -39,11 +39,10 @@ def do_basic_demo() -> None:
 	"""Creates a single QR Code, then prints it to the console."""
 	text = input('Enter the URL to make into a QR code : ')
 	errcorlvl = QrCode.Ecc.LOW  # Error correction level
-	qrsvgname = input('Enter the file name including extension .svg : ')
-
+	
 	# Make and print the QR Code symbol
 	qr = QrCode.encode_text(text, errcorlvl)
-	print_qr(qr)
+	# print_qr(qr)
 	print(to_svg_str(qr, 4))
 
 
@@ -67,8 +66,9 @@ def to_svg_str(qr: QrCode, border: int) -> str:
 	<path d="{" ".join(parts)}" fill="#000000"/>
 </svg>
 """
-	with open( 'myqr.svg', 'w') as q:
-	# with open(qrsvgname, 'w') as q:
+	qrsvgname = input('Enter the file name including extension .svg : ')
+	# with open( 'myqr.svg', 'w') as q:
+	with open(qrsvgname, 'w') as q:
 		q.write(myqr)
 
 def print_qr(qrcode: QrCode) -> None:
